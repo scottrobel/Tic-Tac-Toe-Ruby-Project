@@ -3,8 +3,6 @@ class Board
     attr_reader :x_positions, :o_positions, :avalible_spots
     def initialize
       setup_board
-      @x_positions = []
-      @o_positions = []
     end 
     def make_move(player,position)
         x_or_o = player.x_or_o
@@ -27,14 +25,22 @@ class Board
         end 
         puts_line_seperator
     end
+    def clear_board
+      setup_board
+    end 
     private
     def puts_line_seperator 
         puts "_________________________________________________"
         puts "                                                  "
+        puts "-------------------------------------------------"
+        puts "                                                  "
+        puts "_________________________________________________"
     end
     def setup_board
         @board_state = (1..9).to_a.map{|e|e.to_s}#1-9 string array
-        @avalible_spots = (1..9).to_a#1-9 int array 
+        @avalible_spots = (1..9).to_a#1-9 int array
+        @x_positions = []
+        @o_positions = []
     end  
     def spot_avalible?(position)
       @avalible_spots.include?(position)
