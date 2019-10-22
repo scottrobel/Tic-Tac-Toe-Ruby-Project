@@ -15,16 +15,20 @@ class Board
     end
     def display_board
         puts_line_seperator
+        number_divider = "||"
         @board_state.each_with_index do |position_value,index| 
           print position_value
           if((index+1)%3!=0)
-            print "||"
+            print number_divider
           else
-            puts ""#goes to new line
+            next_line
           end 
         end 
         puts_line_seperator
     end
+    def next_line 
+      puts ""
+    end 
     def clear_board
       setup_board
     end 
@@ -56,7 +60,7 @@ class Board
         @board_state[position-1] = "O"
         @o_positions << position
       else
-        puts "Invalid Position"
+        puts "Invalid Char"
       end  
     end 
 

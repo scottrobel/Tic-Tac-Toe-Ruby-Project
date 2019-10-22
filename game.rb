@@ -11,11 +11,11 @@ class Game
     def prompt_for_desired_number_of_rounds
         puts "How many rounds would You like to play?"
         while true
-            ammount_of_rounds  = gets.chomp.to_i
+            ammount_of_rounds  = gets.chomp.to_i#non ints will be converted to zero and denyed by the boolean 
             if(ammount_of_rounds.is_a?(Integer) && ammount_of_rounds > 0)
                 break
             else
-                puts "PLease enter a valid number greater than 0"
+                puts "Please enter a valid number greater than 0"
             end
         end
         ammount_of_rounds
@@ -82,9 +82,9 @@ class Game
         win?(get_player_positions(@player_one))? @player_one :  @player_two
     end 
     def assign_player_names
-        puts "player 1 You are O's Please enter your name"
+        puts "player 1 You are X's Please enter your name"
         player_one_name = gets.chomp
-        puts "player 2 You are X's Please enter your name"
+        puts "player 2 You are O's Please enter your name"
         player_two_name = gets.chomp
         @player_one = Player.new(player_one_name)
         @player_two = Player.new(player_two_name)
@@ -123,7 +123,7 @@ class Game
     def prompt_player(player)
         print_player_name_and_number(player)
         puts "You are #{player.x_or_o}'s"
-        puts "Enter The position you would like to place Your #{player.x_or_o}"
+        puts "Enter The position you would like to place Your #{player.x_or_o} Avalible options: #{@game_board.avalible_spots}"
     end 
     def print_player_name_and_number(player)
         puts "Player #{get_player_number(player)} : #{player.player_name}"
@@ -150,7 +150,7 @@ class Game
     puts"    '._==_==_=_.'"
     puts"    .-\:      /-."
     puts"   | (|PLAYER#{get_player_number(player)}|) |"
-    puts"    '-|:.     |-'"
+    puts"    '-|#{player.player_name.center(7)}|-'"
     puts"      \::.    /"
     puts"       '::. .'"
     puts"         ) ("
