@@ -15,15 +15,11 @@ class Board
     end
     def display_board
         puts_line_seperator
-        number_divider = "||"
-        @board_state.each_with_index do |position_value,index| 
-          print position_value
-          if((index+1)%3!=0)
-            print number_divider
-          else
-            next_line
-          end 
-        end 
+        puts" #{@board_state[0]} | #{@board_state[1]} | #{@board_state[2]} "
+        puts"---+---+--- "
+        puts" #{@board_state[3]} | #{@board_state[4]} | #{@board_state[5]} "
+        puts"---+---+--- "
+        puts" #{@board_state[6]} | #{@board_state[7]} | #{@board_state[8]} "
         puts_line_seperator
     end
     def next_line 
